@@ -10,34 +10,31 @@ def main():
    screen = pygame.display.set_mode(DISPLAY)
    clock = pygame.time.Clock()
 
-   bg = pygame.Surface((32, 32))
-   bg.convert()
-   bg.fill(pygame.Color("#000000"))
    entities = pygame.sprite.Group()
    pc = player.Player()
    platforms = []
 
    # Temporary
    level = [
-   "PPPPPPPPPPPPPPPPPPPPPPPPP",
-   "P                       P",
-   "P                       P",
-   "P                       P",
-   "P                       P",
-   "P                       P",
-   "P  PPPP                 P",
-   "P                       P",
-   "P           PP          P",
-   "P                  P    P",
-   "P                       P",
-   "P            PPPP       P",
-   "P                       P",
-   "P                       P",
-   "P      PPPP             P",
-   "P                       P",
-   "P              PPPPP    P",
-   "P                       P",
-   "P                       P",
+   "                         ",
+   "                         ",
+   "                         ",
+   "                         ",
+   "                         ",
+   "                         ",
+   "  PPPP                   ",
+   "                         ",
+   "           PP            ",
+   "                  P      ",
+   "                         ",
+   "            PPPP         ",
+   "                         ",
+   "                         ",
+   "      PPPP               ",
+   "                         ",
+   "              PPPPP      ",
+   "                         ",
+   "                         ",
    "PPPPPPPPPPPPPPPPPPPPPPPPP",]
    x = 0
    y = 0
@@ -62,7 +59,7 @@ def main():
       key_presses = pygame.event.get(pygame.KEYDOWN)
       key_states = pygame.key.get_pressed()
 
-      screen.fill(pygame.Color("#000000"))
+      screen.fill(pygame.Color("#00FFFF"))
 
       pc.update(key_presses, key_states, platforms)
       entities.draw(screen)
