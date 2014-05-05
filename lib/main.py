@@ -59,6 +59,9 @@ def main():
    bg.fill(pygame.Color("#00FFFF"))
    sunImage = pygame.image.load("./data/sun.bmp").convert()
    bg.blit(sunImage, (410, -10))
+   cloudImage = pygame.image.load("./data/cloud.bmp").convert()
+   bg.blit(cloudImage, (100, 75))
+   bg.blit(cloudImage, (340, 215))
 
    while 1:
       if pygame.event.get(pygame.QUIT):
