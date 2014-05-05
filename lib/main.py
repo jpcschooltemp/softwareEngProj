@@ -2,6 +2,7 @@ import pygame
 
 import player
 import platform
+import splash
 
 DISPLAY = (800, 640)
 
@@ -9,6 +10,7 @@ def main():
    pygame.init()
    screen = pygame.display.set_mode(DISPLAY)
    clock = pygame.time.Clock()
+   pygame.display.set_caption("SoftEng Proj")
 
    entities = pygame.sprite.Group()
    pc = player.Player()
@@ -50,6 +52,8 @@ def main():
 
    entities.add(pc)
    entities.draw(screen)
+
+   splash.Splash.init(screen)
 
    while 1:
       if pygame.event.get(pygame.QUIT):
