@@ -55,6 +55,11 @@ def main():
 
    splash.Splash.init(screen)
 
+   bg = pygame.Surface((800, 640)).convert()
+   bg.fill(pygame.Color("#00FFFF"))
+   sunImage = pygame.image.load("./data/sun.bmp").convert()
+   bg.blit(sunImage, (410, -10))
+
    while 1:
       if pygame.event.get(pygame.QUIT):
          return
@@ -63,7 +68,8 @@ def main():
       key_presses = pygame.event.get(pygame.KEYDOWN)
       key_states = pygame.key.get_pressed()
 
-      screen.fill(pygame.Color("#00FFFF"))
+      #screen.fill(pygame.Color("#00FFFF"))
+      screen.blit(bg, (0, 0))
 
       pc.update(key_presses, key_states, platforms)
       entities.draw(screen)
