@@ -15,6 +15,8 @@ def main():
    screen = pygame.display.set_mode(DISPLAY)
    clock = pygame.time.Clock()
    pygame.display.set_caption("Jumpy Jumpy")
+   timer = 0
+   currentFrame = 0
 
    pc = player.Player()
    currentLevel = 1
@@ -33,6 +35,8 @@ def main():
    bg.blit(cloudImage, (340, 215))
 
    while 1:
+      currentFrame = currentFrame + 1
+
       if pygame.event.get(pygame.QUIT):
          return
 
@@ -53,5 +57,10 @@ def main():
             pc.reset()
          else:
             end.displayScreen(screen)
+
+      if currentFrame == 30:
+         currentFrame = 0
+         timer = timer + 1
+         print timer
 
       pygame.display.flip()
