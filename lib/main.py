@@ -15,8 +15,9 @@ def main():
    pygame.display.set_caption("Jumpy Jumpy")
 
    pc = player.Player()
+   currentLevel = 2
 
-   entities = level.initializeLevel(1)
+   entities = level.initializeLevel(currentLevel)
    entities.add(pc)
 
    splash.Splash.init(screen)
