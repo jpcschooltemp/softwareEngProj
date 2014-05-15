@@ -71,7 +71,6 @@ def main():
       key_presses = pygame.event.get(pygame.KEYDOWN)
       key_states = pygame.key.get_pressed()
 
-      #screen.fill(pygame.Color("#00FFFF"))
       screen.blit(bg, (0, 0))
 
       pc.update(key_presses, key_states, platforms)

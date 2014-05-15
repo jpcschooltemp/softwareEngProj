@@ -10,7 +10,7 @@ class Player(pygame.sprite.Sprite):
       self.image = pygame.Surface((32, 32))
       self.image.convert()
       self.image.fill(pygame.Color("#FF0000"))
-      self.rect = pygame.Rect(32, 32, 32, 32) 
+      self.rect = pygame.Rect(32, -32, 32, 32) 
 
    def update(self, key_presses, key_states, platforms):
       if key_states[pygame.K_UP]:
@@ -26,6 +26,10 @@ class Player(pygame.sprite.Sprite):
          self.yvel += 1.0
       if not (key_states[pygame.K_LEFT] or key_states[pygame.K_RIGHT]):
          self.xvel = 0
+      if (self.rect.top >= 640):
+         self.rect = pygame.Rect(32, -32, 32, 32)
+         self.xvel = 0
+         self.yvel = 0
 
       # Increment in x direction
       self.rect.left += self.xvel
