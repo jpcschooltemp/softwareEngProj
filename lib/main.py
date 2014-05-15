@@ -5,8 +5,10 @@ import player
 import platform
 import goal
 import splash
+import end
 
 DISPLAY = (800, 640)
+LAST_LEVEL = 3
 
 def main():
    pygame.init()
@@ -45,8 +47,11 @@ def main():
 
       if win:
          currentLevel = currentLevel + 1
-         entities = level.initializeLevel(currentLevel)
-         entities.add(pc)
-         pc.reset()
+         if currentLevel <= LAST_LEVEL:
+            entities = level.initializeLevel(currentLevel)
+            entities.add(pc)
+            pc.reset()
+         else:
+            end.displayScreen(screen)
 
       pygame.display.flip()
