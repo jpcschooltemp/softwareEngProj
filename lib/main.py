@@ -10,7 +10,7 @@ def main():
    pygame.init()
    screen = pygame.display.set_mode(DISPLAY)
    clock = pygame.time.Clock()
-   pygame.display.set_caption("SoftEng Proj")
+   pygame.display.set_caption("Jumpy Jumpy")
 
    entities = pygame.sprite.Group()
    pc = player.Player()
