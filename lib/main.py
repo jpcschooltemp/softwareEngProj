@@ -17,6 +17,8 @@ def main():
    pygame.display.set_caption("Jumpy Jumpy")
    timer = 0
    currentFrame = 0
+   font = pygame.font.Font(None, 36)
+   timerDisplay = font.render("0", 1, (0, 0, 0))
 
    pc = player.Player()
    currentLevel = 1
@@ -61,6 +63,9 @@ def main():
       if currentFrame == 30:
          currentFrame = 0
          timer = timer + 1
-         print timer
+         timerDisplay = font.render(str(timer), 1, (0, 0, 0))
+         
+      screen.blit(timerDisplay, (0, 0))
+
 
       pygame.display.flip()
