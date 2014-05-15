@@ -17,27 +17,8 @@ def main():
    pc = player.Player()
 
    # Temporary
-   level = [
-   "                         ",
-   "                         ",
-   "                         ",
-   "                         ",
-   "                         ",
-   "                         ",
-   "                         ",
-   "           G             ",
-   "           PP            ",
-   "                         ",
-   "                         ",
-   "            PPPP         ",
-   "                         ",
-   "                         ",
-   "      PPPP               ",
-   "                         ",
-   "              PPPPP      ",
-   "                         ",
-   "                         ",
-   "PPPPPPPPPPPPPPPPPPPPPPPPP",]
+   level = open('data/level1')
+
    x = 0
    y = 0
    for row in level:
