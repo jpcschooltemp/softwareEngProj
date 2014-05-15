@@ -2,6 +2,7 @@ import pygame
 
 import player
 import platform
+import goal
 import splash
 
 DISPLAY = (800, 640)
@@ -14,7 +15,6 @@ def main():
 
    entities = pygame.sprite.Group()
    pc = player.Player()
-   platforms = []
 
    # Temporary
    level = [
@@ -25,7 +25,7 @@ def main():
    "                         ",
    "                         ",
    "                         ",
-   "           E             ",
+   "           G             ",
    "           PP            ",
    "                         ",
    "                         ",
@@ -44,8 +44,10 @@ def main():
       for col in row:
          if col == "P":
             p = platform.Platform(x, y)
-            platforms.append(p)
             entities.add(p)
+         if col == "G":
+            g = goal.Goal(x, y)
+            entities.add(g)
          x += 32
       y += 32
       x = 0
@@ -73,7 +75,7 @@ def main():
 
       screen.blit(bg, (0, 0))
 
-      pc.update(key_presses, key_states, platforms)
+      pc.update(key_presses, key_states, entities)
       entities.draw(screen)
 
       pygame.display.flip()

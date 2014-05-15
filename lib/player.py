@@ -1,5 +1,6 @@
 import pygame
-
+import platform
+import goal
 
 class Player(pygame.sprite.Sprite):
    def __init__(self):
@@ -12,7 +13,7 @@ class Player(pygame.sprite.Sprite):
       self.image.fill(pygame.Color("#FF0000"))
       self.rect = pygame.Rect(32, -32, 32, 32) 
 
-   def update(self, key_presses, key_states, platforms):
+   def update(self, key_presses, key_states, entities):
       if key_states[pygame.K_UP]:
          if self.on_ground:
             self.yvel -= 14
@@ -34,22 +35,25 @@ class Player(pygame.sprite.Sprite):
       # Increment in x direction
       self.rect.left += self.xvel
       # Do x-axis collisions
-      self.collide(self.xvel, 0, platforms)
+      self.collide(self.xvel, 0, entities)
       # Increment in y direction
       self.rect.top += self.yvel
       self.on_ground = False
-      self.collide(0, self.yvel, platforms)
+      # Do y-axis collisions
+      self.collide(0, self.yvel, entities)
 
-   def collide(self, xvel, yvel, platforms):
-      for p in platforms:
-         if pygame.sprite.collide_rect(self, p):
-            if xvel > 0: self.rect.right = p.rect.left
-            if xvel < 0: self.rect.left = p.rect.right
-            if yvel > 0:
-               self.rect.bottom = p.rect.top
-               self.on_ground = True
-               self.yvel = 0
-            if yvel < 0:
-               self.rect.top = p.rect.bottom
-               self.yvel = 0
-
+   def collide(self, xvel, yvel, entities):
+      for e in entities:
+         if pygame.sprite.collide_rect(self, e):
+            if isinstance(e, platform.Platform):
+               if xvel > 0: self.rect.right = e.rect.left
+               if xvel < 0: self.rect.left = e.rect.right
+               if yvel > 0:
+                  self.rect.bottom = e.rect.top
+                  self.on_ground = True
+                  self.yvel = 0
+               if yvel < 0:
+                  self.rect.top = e.rect.bottom
+                  self.yvel = 0
+            if isinstance(e, goal.Goal):
+               print "YOU WON!"
