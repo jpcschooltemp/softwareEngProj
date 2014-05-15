@@ -1,5 +1,6 @@
 import pygame
 
+import level
 import player
 import platform
 import goal
@@ -13,28 +14,10 @@ def main():
    clock = pygame.time.Clock()
    pygame.display.set_caption("Jumpy Jumpy")
 
-   entities = pygame.sprite.Group()
    pc = player.Player()
 
-   # Temporary
-   level = open('data/level1')
-
-   x = 0
-   y = 0
-   for row in level:
-      for col in row:
-         if col == "P":
-            p = platform.Platform(x, y)
-            entities.add(p)
-         if col == "G":
-            g = goal.Goal(x, y)
-            entities.add(g)
-         x += 32
-      y += 32
-      x = 0
-
+   entities = level.initializeLevel(1)
    entities.add(pc)
-   entities.draw(screen)
 
    splash.Splash.init(screen)
 
