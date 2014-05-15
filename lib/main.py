@@ -58,7 +58,7 @@ def main():
             entities.add(pc)
             pc.reset()
          else:
-            end.displayScreen(screen)
+            end.displayScreen(screen, timer)
 
       if currentFrame == 30:
          currentFrame = 0
