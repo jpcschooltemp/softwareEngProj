@@ -15,7 +15,7 @@ def main():
    pygame.display.set_caption("Jumpy Jumpy")
 
    pc = player.Player()
-   currentLevel = 2
+   currentLevel = 3
 
    entities = level.initializeLevel(currentLevel)
    entities.add(pc)

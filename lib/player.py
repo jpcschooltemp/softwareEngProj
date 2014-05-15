@@ -24,7 +24,7 @@ class Player(pygame.sprite.Sprite):
       if key_states[pygame.K_RIGHT]:
          self.xvel = 10
       if not self.on_ground:
-         self.yvel += 1.0
+         self.yvel += 1
       if not (key_states[pygame.K_LEFT] or key_states[pygame.K_RIGHT]):
          self.xvel = 0
       if (self.rect.top >= 640):
