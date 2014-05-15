@@ -28,19 +28,19 @@ class Player(pygame.sprite.Sprite):
       if not (key_states[pygame.K_LEFT] or key_states[pygame.K_RIGHT]):
          self.xvel = 0
       if (self.rect.top >= 640):
-         self.rect = pygame.Rect(32, -32, 32, 32)
-         self.xvel = 0
-         self.yvel = 0
+         self.reset()
 
       # Increment in x direction
       self.rect.left += self.xvel
       # Do x-axis collisions
-      self.collide(self.xvel, 0, entities)
+      win = self.collide(self.xvel, 0, entities)
       # Increment in y direction
       self.rect.top += self.yvel
       self.on_ground = False
       # Do y-axis collisions
-      self.collide(0, self.yvel, entities)
+      win = self.collide(0, self.yvel, entities)
+
+      return win
 
    def collide(self, xvel, yvel, entities):
       for e in entities:
@@ -56,4 +56,10 @@ class Player(pygame.sprite.Sprite):
                   self.rect.top = e.rect.bottom
                   self.yvel = 0
             if isinstance(e, goal.Goal):
-               print "YOU WON!"
+               return True
+      return False
+
+   def reset(self):
+      self.rect = pygame.Rect(32, -32, 32, 32)
+      self.xvel = 0
+      self.yvel = 0

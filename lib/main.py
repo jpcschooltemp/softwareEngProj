@@ -15,7 +15,7 @@ def main():
    pygame.display.set_caption("Jumpy Jumpy")
 
    pc = player.Player()
-   currentLevel = 3
+   currentLevel = 1
 
    entities = level.initializeLevel(currentLevel)
    entities.add(pc)
@@ -40,7 +40,13 @@ def main():
 
       screen.blit(bg, (0, 0))
 
-      pc.update(key_presses, key_states, entities)
+      win = pc.update(key_presses, key_states, entities)
       entities.draw(screen)
+
+      if win:
+         currentLevel = currentLevel + 1
+         entities = level.initializeLevel(currentLevel)
+         entities.add(pc)
+         pc.reset()
 
       pygame.display.flip()
