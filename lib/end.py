@@ -1,10 +1,10 @@
 import pygame
 
 def displayScreen(screen):
-   screen.fill(pygame.Color("#FFFFFF"))
+   screen.fill(pygame.Color("#000000"))
 
    font = pygame.font.Font(None, 36)
-   text = font.render("You have won the game!", 1, (10, 10, 10))
+   text = font.render("You have won the game!", 1, (255, 255, 255))
    screen.blit(text, (250, 250))
 
    pygame.display.flip()
